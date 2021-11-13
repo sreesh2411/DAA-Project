@@ -1,0 +1,62 @@
+Name: K. Sreesh Reddy
+SRN: PES1201801580
+
+						ASSIGNMENT REPORT: PES1CSE201801580
+
+						*INTRODUCTION*
+
+Intal (Integer of arbitrary length) can be stated as an large integer as an array whose digits are stored in consecutive indexes of the array. 
+
+It differs from integers and integer data types as such:
+1. We cannot consider individual and separate digits of a number in integer type or float type but using intal, they can be found out. 
+2. To declare integers, floats etc. we use variables but for declaring an intal, we use character arrays.
+
+Application of intal are:
+1. Can be used to do mathematics with large numbers (as large as 10^1000) which aren't possible to do or available in any current data types in C.
+
+
+						*IMPLEMENTATION*
+
+Here are the implementation of the various functions declared in intal.h
+
+1. char* intal_add(const char* intal1, const char* intal2): The two character arrays are compared initially to check which is larger. Then we reverse the array using the static function reversestring so that we can start addition from the least significant digit and also consider the carry coming from the addition of the digits. These are stored in another array which is reversed again to obtain the answer.
+
+2. int intal_compare(const char* intal1, const char* intal2): First, we check if both the arrays are of same length. If they aren't, we can instantly refuse the possibilty of equality. If they are equal, then each digit of both strings are compared individually.
+
+3. char* intal_diff(const char* intal1, const char* intal2): First, we check which intal is larger so we can always subtract the smaller array from the larger array. Then, as we did with addition, we reverse the string using the static function reversestring and subtract the least significant digit of the smaller intal from the bigger intal. We also use the carry variable to keep check. The array is reversed again to obtain the answer.
+
+4. char* intal_multiply(const char* intal1, const char* intal2): As we do with normal multiplication, we use each digit of the multiplier and multiply it with the multiplicand and add them to obtain the solution. Similarly, each digit of intal1 is multiplied with intal2 to obtain the answer.
+
+5. char* intal_mod(const char* intal1, const char* intal2): If intal1 is lesser than intal2 then return intal1. Otherwise, keep subtracting intal2 from intal1 until in the mod function, the first argument is lesser than the second argument. Then, the first argument which will be the answer is returned. If both are equal then 0 is returned. 
+
+6. char* intal_pow(const char* intal1, unsigned int n): If n is equal to 0, then the intal 1 is returned. Otherwise, we use divide and conquer. If n is even, then we multiply the intal1 to the power of n/2 by using the function recurringly. If n is odd, then intal is multiplied to the product of intal to the power of 2.
+
+7. char* intal_gcd(const char* intal1, const char* intal2): We use euclidian algorithm here to find the answer until 1 of the numbers become zero. Gcd function is recursively called but the in the second argument, we give the modded value of first intal to second intal.
+
+8. char* intal_fibonacci(unsigned int n): We create two intals of value 0 and 1. These are the first two values of the fibonacci series. We then keep adding the first and second value updating them accordingly so as to get the result.
+
+9. char* intal_factorial(unsigned int n): This is found recursively. If the value is 1, then intal 1 is returned. Otherwise, n is multiplied by the factorial of n-1 to obtain the answer.
+
+10. char* intal_bincoeff(unsigned int n, unsigned int k): Binary coefficient basically means finding the coefficient of x^k in (1+x)^n. We find the product of every coefficient and then add them to obtain the answer.
+
+11. int intal_max(char **arr, int n): We iterate through the array from first to last. We define max element to be the first one. If there is an element greater than that, then max is equated to that. And the index of that is returned. Since we are iterating from lowest to highest, the least offset is returned if the value repeats.
+
+12. int intal_min(char **arr, int n): We iterate through the array from first to last. We define min element to be the first element in the array. If there is an element smaller than that, then min is equated to that. And the index of that is returned. Since we are iterating from lowest to highest, the least offset is returned if the value repeats.
+
+13. int intal_search(char **arr, int n, const char* key): We compare the key with every element in the array, and return the index of the element if it is found to be equal. Since we iterate from lowest to highest, the least offset is returned if the value is repeated.
+
+14. int intal_binsearch(char **arr, int n, const char* key): We use the basic binary search algorithm where we divide the ascending array in 2 parts. If the key is lesser than the middle element, high is changed to middle -1, otherwise low is changed to middle + 1. If the element is still not found, -1 is returned.
+
+15. void intal_sort(char **arr, int n): Merge sort is a sorting technique based on divide and conquer technique. Its worst case time complexity is O(nlogn). We first divide the whole array iteratively into equal halves until the atomic values are achieved. We then compare the element from each list and then combine them into another list in a sorted manner. 
+
+16. char* coin_row_problem(char **arr, int n): We can calculate the max amount collected at every index in n by selecting the maximum value between the (sum of the value at that index and index + 2) and (value at index + 1).
+
+						*FUTURE WORK*
+
+The intal_pow function only works for integers hence we cannot find square root, cube root etc. Hence, room for that would improve the library.
+
+If there were no restrictions, I would use arrays and pointers. An array of Integers will be capable of having elements till max value of Intergers. Which means in theory each Array can store Integer Max raised to the power of Integer Max value which is quite large. This can be done because in theory, arrays are just pointers to the first element of the array(At least in C/C++). So they don't have any limit of data they can store, except the maximum number of element which is restricted by the max value of Integer itself on that particular system. For even bigger values, multidimensional arrays can be used.
+ 
+
+
+
